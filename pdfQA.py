@@ -66,8 +66,6 @@ def main():
         # pages = text_splitter.split_documents(documents)
         # print(pages)
 
-        ##==== LLM
-        openai.api_key = os.getenv("OPENAI_API_KEY")
         ##==== Chroma
         # 使用するLLMやパラメータをカスタマイズする
         llm_predictor = LLMPredictor(llm=ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo"))
