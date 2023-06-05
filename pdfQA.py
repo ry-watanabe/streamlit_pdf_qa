@@ -37,8 +37,6 @@ def main():
     static_store = get_static_store()
     
     uploaded_pdf_files = st.file_uploader("Choose a PDF file", accept_multiple_files=True, type=["pdf"])
-    if st.button("Clear file list"):
-        static_store.clear()
 
     with st.form(key='pdfqa'):
         question = st.text_input("質問内容を入力してください。（例）有給休暇について教えてください。",value="有給休暇について教えてください。")
@@ -51,15 +49,13 @@ def main():
 
         for filename in uploaded_pdf_files:
             st.write(filename)
-            filepath = os.path.join(filename.name)
-            st.write(filepath)
 
             ##==== Load & Split
             loader = PDFReader()
             if documents:
-                documents += loader.load_data(filepath)
+                documents += loader.load_data(filename)
             else:
-                documents = loader.load_data(filepath)
+                documents = loader.load_data(filename)
 
         # text_splitter = CharacterTextSplitter(separator="\n", chunk_size=200, chunk_overlap=10)
         print(documents)
