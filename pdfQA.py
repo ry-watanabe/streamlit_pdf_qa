@@ -26,7 +26,6 @@ def main():
 
     # APIキーを設定します
     openai.api_key = st.text_input("openAIのAPIキーを入力してください。", value=openai.api_key)
-    os.environ["OPENAI_API_KEY"] = openai.api_key
     
     ##==== Download
     # pdf_directory = "/content/drive/MyDrive/Playlist/00.Desk/14.渡部諒/Model"
