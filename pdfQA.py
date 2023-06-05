@@ -24,12 +24,10 @@ def get_static_store() -> Dict:
 def main():
     st.title("Transcribe Audio with OpenAI")
 
-    os.environ["OPENAI_API_KEY"] = ''
-    openai.api_key = os.environ["OPENAI_API_KEY"]
-
     # APIキーを設定します
     openai.api_key = st.text_input("openAIのAPIキーを入力してください。", value=openai.api_key)
-
+    os.environ["OPENAI_API_KEY"] = openai.api_key
+    
     ##==== Download
     # pdf_directory = "/content/drive/MyDrive/Playlist/00.Desk/14.渡部諒/Model"
     # pdf_files = [os.path.join(pdf_directory, f) for f in os.listdir(pdf_directory) if f.endswith(".pdf")]
